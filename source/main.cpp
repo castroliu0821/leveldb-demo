@@ -72,7 +72,7 @@ void test_db_init(leveldb::DB** pDB) {
 
     options.block_cache = leveldb::NewLRUCache(100*1048576);
 
-    leveldb::Status status = leveldb::DB::Open(options, "/home/liuhu/testdb", pDB);
+    leveldb::Status status = leveldb::DB::Open(options, "./database", pDB);
     if (!status.ok() || nullptr == *pDB) {
         LOG_ERR("open error: %v" ,status.ToString());
     }
