@@ -3,8 +3,6 @@
 #include <iostream>
 #include <map>
 
-#include <boost/format.hpp>
-
 #include "leveldb/db.h"
 #include "leveldb/env.h"
 #include "leveldb/write_batch.h"
@@ -113,8 +111,8 @@ void test_db_write(leveldb::DB* pDB) {
 
         while (size > index++) {
             static int64_t kv = 0 ;
-            leveldb::Slice key = str(boost::format("%1%") % kv);
-            leveldb::Slice value = str(boost::format("%1%") % kv);
+            leveldb::Slice key = to_string(kv);
+            leveldb::Slice value = to_string(kv);
 
             dataBatch->Put(key, value);
             ++kv;
